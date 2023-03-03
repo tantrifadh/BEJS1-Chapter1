@@ -55,27 +55,34 @@ const menuHandling = async (choice) => {
 }
 
 const tambah = async () => {
+    console.log("-----------------------");
     const input1 = await operan('angka pertama: ');
     const input2 = await operan('angka kedua: ');
 
+    console.log("-----------------------");
     console.log(`Hasil penjumlahan dari ${input1} + ${input2} = ${input1 + input2}`);
 }
 
 const kurang = async () => {
+    console.log("-----------------------");
     const input1 = await operan('angka pertama: ');
     const input2 = await operan('angka kedua: ');
 
+    console.log("-----------------------");
     console.log(`Hasil pengurangan dari ${input1} - ${input2} = ${input1 - input2}`);
 }
 
 const kali = async () => {
+    console.log("-----------------------");
     const input1 = await operan('angka pertama: ');
     const input2 = await operan('angka kedua: ');
 
+    console.log("-----------------------");
     console.log(`Hasil perkalian dari ${input1} * ${input2} = ${input1 * input2}`);
 }
 
 const bagi = async () => {
+    console.log("-----------------------");
     const input1 = await operan('angka pertama: ');
     const input2 = await operan('angka kedua: ');
 
@@ -84,61 +91,70 @@ const bagi = async () => {
         process.exit()
     }
 
+    console.log("-----------------------");
     console.log(`Hasil pembagian dari ${input1} / ${input2} = ${input1 / input2}`);
 }
 
 const akarKuadrat = async () => {
+    console.log("-----------------------");
     const input = await operan();
     const result = Math.sqrt(input)
 
-    console.log(`√${input} = ${result}`);
+    console.log("-----------------------");
+    console.log(`Akar kuadrat dari √${input} = ${result}`);
 }
 
 const luasPersegi = async () => {
+    console.log("-----------------------");
     const input1 = await operan('panjang: ');
     const input2 = await operan('lebar: ');
     const result = input1 * input2;
 
+    console.log("-----------------------");
     console.log(`Panjang = ${input1}`);
     console.log(`Lebar = ${input2}`);
-    console.log(`L = ${input1} x ${input2} = ${result}`)
+    console.log(`Luas Persegi = ${input1} x ${input2} = ${result}`)
 }
 
 const volumeKubus = async () => {
+    console.log("-----------------------");
     const input = await operan('panjang rusuk: ');
     const result = input**3;
 
-    console.log(`V = ${input} x ${input} x ${input} = ${result}`);
+    console.log("-----------------------");
+    console.log(`Volume Kubus = ${input} x ${input} x ${input} = ${result}`);
 }
 
 const volumeTabung = async () => {
+    console.log("-----------------------");
     const input1 = await operan('jari-jari: ');
     const input2 = await operan('tinggi: ');
-    const result = Math.round(Math.PI * input1 * input1 * input2)
+    const result = Math.round(Math.PI * input1**2 * input2)
 
+    console.log("-----------------------");
     console.log(`Jari jari = ${input1}`);
     console.log(`Tinggi = ${input2}`);
-    console.log(`V = π x ${input1} x ${input1} x ${input2} = ${result}`)
+    console.log(`Volume Tabung = π x ${input1} x ${input1} x ${input2} = ${result}`)
 }
 
 const operan = async (question = "angka: ") => {
     const input = await inquirer.prompt({
         name: "input",
         type: "input",
-        message: `Inputkan ${question}`,
+        message: `Input  ${question}`,
         validate: function (input) {
-            return _validateInput(input);
+            return validateInput(input);
         }
     });
 
     return parseInt(input.input);
 }
 
-const _validateInput = (input) => {
+const validateInput = (input) => {
     if (input.trim() === "")
-        throw new Error('Input is required');
+        throw new Error('Wajib Input');
     if (isNaN(input))
-        throw new Error('You need provide a number');
+        throw new Error('Harus memberikan nomor');
 
     return true;
 }
